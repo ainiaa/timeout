@@ -100,7 +100,7 @@ func New(opts ...Option) gin.HandlerFunc {
 		select {
 		case <-ch:
 			c.Next()
-		case <-time.After(to.timeout):
+		case <-time.After(to.timeout): // time out
 			c.Abort()
 			to.response(c)
 			return
